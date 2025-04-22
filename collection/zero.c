@@ -6,17 +6,13 @@
         "depends": [
             "zero.h"
         ],
-        "name": "sort",
+        "name": "zero",
         "sources": [
             "zero.pyx",
-            "heap.c",
-            "merge.c",
-            "quick.c",
-            "radix.c",
-            "regular.c"
+            "zero_c.c"
         ]
     },
-    "module_name": "sort"
+    "module_name": "zero"
 }
 END: Cython Metadata */
 
@@ -1236,8 +1232,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__sort
-#define __PYX_HAVE_API__sort
+#define __PYX_HAVE__zero
+#define __PYX_HAVE_API__zero
 /* Early includes */
 #include <string.h>
 #include <stdlib.h>
@@ -1755,13 +1751,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
 #define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
 #endif
 
-/* SetPackagePathFromImportLib.proto */
-#if PY_MAJOR_VERSION >= 3 && !CYTHON_PEP489_MULTI_PHASE_INIT
-static int __Pyx_SetPackagePathFromImportLib(PyObject *module_name);
-#else
-#define __Pyx_SetPackagePathFromImportLib(a) 0
-#endif
-
 /* IncludeStructmemberH.proto */
 #include <structmember.h>
 
@@ -2024,18 +2013,18 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* Module declarations from "libc.stdlib" */
 
-/* Module declarations from "sort" */
-static int __pyx_f_4sort_modulo2(int, int __pyx_skip_dispatch); /*proto*/
-static int __pyx_f_4sort_nearestEven(int, int __pyx_skip_dispatch); /*proto*/
-static int __pyx_f_4sort_incr(int, int __pyx_skip_dispatch); /*proto*/
-static int __pyx_f_4sort_decr(int, int __pyx_skip_dispatch); /*proto*/
+/* Module declarations from "zero" */
+static int __pyx_f_4zero_modulo2(int, int __pyx_skip_dispatch); /*proto*/
+static int __pyx_f_4zero_nearestEven(int, int __pyx_skip_dispatch); /*proto*/
+static int __pyx_f_4zero_incr(int, int __pyx_skip_dispatch); /*proto*/
+static int __pyx_f_4zero_decr(int, int __pyx_skip_dispatch); /*proto*/
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "sort"
-extern int __pyx_module_is_main_sort;
-int __pyx_module_is_main_sort = 0;
+#define __Pyx_MODULE_NAME "zero"
+extern int __pyx_module_is_main_zero;
+int __pyx_module_is_main_zero = 0;
 
-/* Implementation of "sort" */
+/* Implementation of "zero" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_print;
@@ -2049,8 +2038,8 @@ static const char __pyx_k_decr[] = "decr";
 static const char __pyx_k_incr[] = "incr";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
-static const char __pyx_k_sort[] = "sort";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_zero[] = "zero";
 static const char __pyx_k_print[] = "print";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_s_arr[] = "s_arr";
@@ -2065,12 +2054,12 @@ static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_Invalid_Integer_Array[] = "Invalid Integer Array";
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_4sort_getMax(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_arr); /* proto */
-static PyObject *__pyx_pf_4sort_2getMin(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_arr); /* proto */
-static PyObject *__pyx_pf_4sort_4modulo2(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a); /* proto */
-static PyObject *__pyx_pf_4sort_6nearestEven(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a); /* proto */
-static PyObject *__pyx_pf_4sort_8incr(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a); /* proto */
-static PyObject *__pyx_pf_4sort_10decr(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a); /* proto */
+static PyObject *__pyx_pf_4zero_getMax(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_arr); /* proto */
+static PyObject *__pyx_pf_4zero_2getMin(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_arr); /* proto */
+static PyObject *__pyx_pf_4zero_4modulo2(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a); /* proto */
+static PyObject *__pyx_pf_4zero_6nearestEven(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a); /* proto */
+static PyObject *__pyx_pf_4zero_8incr(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a); /* proto */
+static PyObject *__pyx_pf_4zero_10decr(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 typedef struct {
@@ -2104,7 +2093,7 @@ typedef struct {
   #endif
   #if CYTHON_USE_MODULE_STATE
   #endif
-  PyObject *__pyx_kp_s_Invalid_Integer_Array;
+  PyObject *__pyx_kp_u_Invalid_Integer_Array;
   PyObject *__pyx_n_s__10;
   PyObject *__pyx_n_s_a;
   PyObject *__pyx_n_s_arr;
@@ -2125,9 +2114,8 @@ typedef struct {
   PyObject *__pyx_n_s_print;
   PyObject *__pyx_n_s_range;
   PyObject *__pyx_n_s_s_arr;
-  PyObject *__pyx_n_s_sort;
-  PyObject *__pyx_n_u_sort;
   PyObject *__pyx_n_s_test;
+  PyObject *__pyx_n_s_zero;
   PyObject *__pyx_kp_s_zero_pyx;
   PyObject *__pyx_int_neg_1;
   PyObject *__pyx_tuple_;
@@ -2181,7 +2169,7 @@ static int __pyx_m_clear(PyObject *m) {
   #ifdef __Pyx_FusedFunction_USED
   Py_CLEAR(clear_module_state->__pyx_FusedFunctionType);
   #endif
-  Py_CLEAR(clear_module_state->__pyx_kp_s_Invalid_Integer_Array);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_Invalid_Integer_Array);
   Py_CLEAR(clear_module_state->__pyx_n_s__10);
   Py_CLEAR(clear_module_state->__pyx_n_s_a);
   Py_CLEAR(clear_module_state->__pyx_n_s_arr);
@@ -2202,9 +2190,8 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_print);
   Py_CLEAR(clear_module_state->__pyx_n_s_range);
   Py_CLEAR(clear_module_state->__pyx_n_s_s_arr);
-  Py_CLEAR(clear_module_state->__pyx_n_s_sort);
-  Py_CLEAR(clear_module_state->__pyx_n_u_sort);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
+  Py_CLEAR(clear_module_state->__pyx_n_s_zero);
   Py_CLEAR(clear_module_state->__pyx_kp_s_zero_pyx);
   Py_CLEAR(clear_module_state->__pyx_int_neg_1);
   Py_CLEAR(clear_module_state->__pyx_tuple_);
@@ -2236,7 +2223,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   #ifdef __Pyx_FusedFunction_USED
   Py_VISIT(traverse_module_state->__pyx_FusedFunctionType);
   #endif
-  Py_VISIT(traverse_module_state->__pyx_kp_s_Invalid_Integer_Array);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_Invalid_Integer_Array);
   Py_VISIT(traverse_module_state->__pyx_n_s__10);
   Py_VISIT(traverse_module_state->__pyx_n_s_a);
   Py_VISIT(traverse_module_state->__pyx_n_s_arr);
@@ -2257,9 +2244,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_print);
   Py_VISIT(traverse_module_state->__pyx_n_s_range);
   Py_VISIT(traverse_module_state->__pyx_n_s_s_arr);
-  Py_VISIT(traverse_module_state->__pyx_n_s_sort);
-  Py_VISIT(traverse_module_state->__pyx_n_u_sort);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
+  Py_VISIT(traverse_module_state->__pyx_n_s_zero);
   Py_VISIT(traverse_module_state->__pyx_kp_s_zero_pyx);
   Py_VISIT(traverse_module_state->__pyx_int_neg_1);
   Py_VISIT(traverse_module_state->__pyx_tuple_);
@@ -2305,7 +2291,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #endif
 #if CYTHON_USE_MODULE_STATE
 #endif
-#define __pyx_kp_s_Invalid_Integer_Array __pyx_mstate_global->__pyx_kp_s_Invalid_Integer_Array
+#define __pyx_kp_u_Invalid_Integer_Array __pyx_mstate_global->__pyx_kp_u_Invalid_Integer_Array
 #define __pyx_n_s__10 __pyx_mstate_global->__pyx_n_s__10
 #define __pyx_n_s_a __pyx_mstate_global->__pyx_n_s_a
 #define __pyx_n_s_arr __pyx_mstate_global->__pyx_n_s_arr
@@ -2326,9 +2312,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_print __pyx_mstate_global->__pyx_n_s_print
 #define __pyx_n_s_range __pyx_mstate_global->__pyx_n_s_range
 #define __pyx_n_s_s_arr __pyx_mstate_global->__pyx_n_s_s_arr
-#define __pyx_n_s_sort __pyx_mstate_global->__pyx_n_s_sort
-#define __pyx_n_u_sort __pyx_mstate_global->__pyx_n_u_sort
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
+#define __pyx_n_s_zero __pyx_mstate_global->__pyx_n_s_zero
 #define __pyx_kp_s_zero_pyx __pyx_mstate_global->__pyx_kp_s_zero_pyx
 #define __pyx_int_neg_1 __pyx_mstate_global->__pyx_int_neg_1
 #define __pyx_tuple_ __pyx_mstate_global->__pyx_tuple_
@@ -2351,15 +2336,15 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4sort_1getMax(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4zero_1getMax(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4sort_1getMax = {"getMax", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4sort_1getMax, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4sort_1getMax(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_4zero_1getMax = {"getMax", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4zero_1getMax, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_4zero_1getMax(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2429,11 +2414,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("sort.getMax", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("zero.getMax", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4sort_getMax(__pyx_self, __pyx_v_arr);
+  __pyx_r = __pyx_pf_4zero_getMax(__pyx_self, __pyx_v_arr);
 
   /* function exit code */
   {
@@ -2446,7 +2431,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4sort_getMax(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_arr) {
+static PyObject *__pyx_pf_4zero_getMax(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_arr) {
   int __pyx_v_n;
   int *__pyx_v_s_arr;
   int __pyx_v_i;
@@ -2611,7 +2596,7 @@ static PyObject *__pyx_pf_4sort_getMax(CYTHON_UNUSED PyObject *__pyx_self, PyObj
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("sort.getMax", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("zero.getMax", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2628,15 +2613,15 @@ static PyObject *__pyx_pf_4sort_getMax(CYTHON_UNUSED PyObject *__pyx_self, PyObj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4sort_3getMin(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4zero_3getMin(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4sort_3getMin = {"getMin", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4sort_3getMin, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4sort_3getMin(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_4zero_3getMin = {"getMin", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4zero_3getMin, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_4zero_3getMin(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2706,11 +2691,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("sort.getMin", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("zero.getMin", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4sort_2getMin(__pyx_self, __pyx_v_arr);
+  __pyx_r = __pyx_pf_4zero_2getMin(__pyx_self, __pyx_v_arr);
 
   /* function exit code */
   {
@@ -2723,7 +2708,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4sort_2getMin(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_arr) {
+static PyObject *__pyx_pf_4zero_2getMin(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_arr) {
   int __pyx_v_n;
   int *__pyx_v_s_arr;
   int __pyx_v_i;
@@ -2888,7 +2873,7 @@ static PyObject *__pyx_pf_4sort_2getMin(CYTHON_UNUSED PyObject *__pyx_self, PyOb
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("sort.getMin", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("zero.getMin", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2904,14 +2889,14 @@ static PyObject *__pyx_pf_4sort_2getMin(CYTHON_UNUSED PyObject *__pyx_self, PyOb
  * 
  */
 
-static PyObject *__pyx_pw_4sort_5modulo2(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4zero_5modulo2(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static int __pyx_f_4sort_modulo2(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static int __pyx_f_4zero_modulo2(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_dispatch) {
   int __pyx_r;
 
   /* "zero.pyx":38
@@ -2938,15 +2923,15 @@ static int __pyx_f_4sort_modulo2(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_dis
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4sort_5modulo2(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4zero_5modulo2(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4sort_5modulo2 = {"modulo2", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4sort_5modulo2, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4sort_5modulo2(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_4zero_5modulo2 = {"modulo2", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4zero_5modulo2, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_4zero_5modulo2(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3016,11 +3001,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("sort.modulo2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("zero.modulo2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4sort_4modulo2(__pyx_self, __pyx_v_a);
+  __pyx_r = __pyx_pf_4zero_4modulo2(__pyx_self, __pyx_v_a);
 
   /* function exit code */
   {
@@ -3033,7 +3018,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4sort_4modulo2(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a) {
+static PyObject *__pyx_pf_4zero_4modulo2(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -3043,7 +3028,7 @@ static PyObject *__pyx_pf_4sort_4modulo2(CYTHON_UNUSED PyObject *__pyx_self, int
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("modulo2", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4sort_modulo2(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_4zero_modulo2(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 37, __pyx_L1_error)
   __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -3053,7 +3038,7 @@ static PyObject *__pyx_pf_4sort_4modulo2(CYTHON_UNUSED PyObject *__pyx_self, int
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("sort.modulo2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("zero.modulo2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3069,14 +3054,14 @@ static PyObject *__pyx_pf_4sort_4modulo2(CYTHON_UNUSED PyObject *__pyx_self, int
  * 
  */
 
-static PyObject *__pyx_pw_4sort_7nearestEven(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4zero_7nearestEven(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static int __pyx_f_4sort_nearestEven(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static int __pyx_f_4zero_nearestEven(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_dispatch) {
   int __pyx_r;
 
   /* "zero.pyx":41
@@ -3103,15 +3088,15 @@ static int __pyx_f_4sort_nearestEven(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4sort_7nearestEven(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4zero_7nearestEven(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4sort_7nearestEven = {"nearestEven", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4sort_7nearestEven, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4sort_7nearestEven(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_4zero_7nearestEven = {"nearestEven", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4zero_7nearestEven, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_4zero_7nearestEven(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3181,11 +3166,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("sort.nearestEven", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("zero.nearestEven", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4sort_6nearestEven(__pyx_self, __pyx_v_a);
+  __pyx_r = __pyx_pf_4zero_6nearestEven(__pyx_self, __pyx_v_a);
 
   /* function exit code */
   {
@@ -3198,7 +3183,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4sort_6nearestEven(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a) {
+static PyObject *__pyx_pf_4zero_6nearestEven(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -3208,7 +3193,7 @@ static PyObject *__pyx_pf_4sort_6nearestEven(CYTHON_UNUSED PyObject *__pyx_self,
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("nearestEven", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4sort_nearestEven(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_4zero_nearestEven(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 40, __pyx_L1_error)
   __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -3218,7 +3203,7 @@ static PyObject *__pyx_pf_4sort_6nearestEven(CYTHON_UNUSED PyObject *__pyx_self,
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("sort.nearestEven", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("zero.nearestEven", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3234,14 +3219,14 @@ static PyObject *__pyx_pf_4sort_6nearestEven(CYTHON_UNUSED PyObject *__pyx_self,
  * 
  */
 
-static PyObject *__pyx_pw_4sort_9incr(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4zero_9incr(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static int __pyx_f_4sort_incr(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static int __pyx_f_4zero_incr(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_dispatch) {
   int __pyx_r;
 
   /* "zero.pyx":44
@@ -3268,15 +3253,15 @@ static int __pyx_f_4sort_incr(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_dispat
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4sort_9incr(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4zero_9incr(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4sort_9incr = {"incr", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4sort_9incr, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4sort_9incr(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_4zero_9incr = {"incr", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4zero_9incr, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_4zero_9incr(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3346,11 +3331,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("sort.incr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("zero.incr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4sort_8incr(__pyx_self, __pyx_v_a);
+  __pyx_r = __pyx_pf_4zero_8incr(__pyx_self, __pyx_v_a);
 
   /* function exit code */
   {
@@ -3363,7 +3348,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4sort_8incr(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a) {
+static PyObject *__pyx_pf_4zero_8incr(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -3373,7 +3358,7 @@ static PyObject *__pyx_pf_4sort_8incr(CYTHON_UNUSED PyObject *__pyx_self, int __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("incr", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4sort_incr(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_4zero_incr(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L1_error)
   __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -3383,7 +3368,7 @@ static PyObject *__pyx_pf_4sort_8incr(CYTHON_UNUSED PyObject *__pyx_self, int __
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("sort.incr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("zero.incr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3399,14 +3384,14 @@ static PyObject *__pyx_pf_4sort_8incr(CYTHON_UNUSED PyObject *__pyx_self, int __
  * 
  */
 
-static PyObject *__pyx_pw_4sort_11decr(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4zero_11decr(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static int __pyx_f_4sort_decr(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static int __pyx_f_4zero_decr(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_dispatch) {
   int __pyx_r;
 
   /* "zero.pyx":47
@@ -3432,15 +3417,15 @@ static int __pyx_f_4sort_decr(int __pyx_v_a, CYTHON_UNUSED int __pyx_skip_dispat
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4sort_11decr(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4zero_11decr(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4sort_11decr = {"decr", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4sort_11decr, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4sort_11decr(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_4zero_11decr = {"decr", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4zero_11decr, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_4zero_11decr(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3510,11 +3495,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("sort.decr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("zero.decr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4sort_10decr(__pyx_self, __pyx_v_a);
+  __pyx_r = __pyx_pf_4zero_10decr(__pyx_self, __pyx_v_a);
 
   /* function exit code */
   {
@@ -3527,7 +3512,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4sort_10decr(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a) {
+static PyObject *__pyx_pf_4zero_10decr(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_a) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -3537,7 +3522,7 @@ static PyObject *__pyx_pf_4sort_10decr(CYTHON_UNUSED PyObject *__pyx_self, int _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("decr", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4sort_decr(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_4zero_decr(__pyx_v_a, 0); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
   __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -3547,7 +3532,7 @@ static PyObject *__pyx_pf_4sort_10decr(CYTHON_UNUSED PyObject *__pyx_self, int _
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("sort.decr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("zero.decr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3571,7 +3556,7 @@ static PyMethodDef __pyx_methods[] = {
 
 static int __Pyx_CreateStringTabAndInitStrings(void) {
   __Pyx_StringTabEntry __pyx_string_tab[] = {
-    {&__pyx_kp_s_Invalid_Integer_Array, __pyx_k_Invalid_Integer_Array, sizeof(__pyx_k_Invalid_Integer_Array), 0, 0, 1, 0},
+    {&__pyx_kp_u_Invalid_Integer_Array, __pyx_k_Invalid_Integer_Array, sizeof(__pyx_k_Invalid_Integer_Array), 0, 1, 0, 0},
     {&__pyx_n_s__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 0, 1, 1},
     {&__pyx_n_s_a, __pyx_k_a, sizeof(__pyx_k_a), 0, 0, 1, 1},
     {&__pyx_n_s_arr, __pyx_k_arr, sizeof(__pyx_k_arr), 0, 0, 1, 1},
@@ -3592,9 +3577,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
     {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
     {&__pyx_n_s_s_arr, __pyx_k_s_arr, sizeof(__pyx_k_s_arr), 0, 0, 1, 1},
-    {&__pyx_n_s_sort, __pyx_k_sort, sizeof(__pyx_k_sort), 0, 0, 1, 1},
-    {&__pyx_n_u_sort, __pyx_k_sort, sizeof(__pyx_k_sort), 0, 1, 0, 1},
     {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
+    {&__pyx_n_s_zero, __pyx_k_zero, sizeof(__pyx_k_zero), 0, 0, 1, 1},
     {&__pyx_kp_s_zero_pyx, __pyx_k_zero_pyx, sizeof(__pyx_k_zero_pyx), 0, 0, 1, 0},
     {0, 0, 0, 0, 0, 0, 0}
   };
@@ -3621,7 +3605,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *             free(s_arr)
  *             return -1
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Invalid_Integer_Array); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Invalid_Integer_Array); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
@@ -3774,10 +3758,10 @@ static int __Pyx_modinit_function_import_code(void) {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_sort(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_zero(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_sort},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_zero},
   {0, NULL}
 };
 #endif
@@ -3790,7 +3774,7 @@ namespace {
   #endif
   {
       PyModuleDef_HEAD_INIT,
-      "sort",
+      "zero",
       0, /* m_doc */
     #if CYTHON_PEP489_MULTI_PHASE_INIT
       0, /* m_size */
@@ -3838,17 +3822,11 @@ namespace {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initsort(void) CYTHON_SMALL_CODE; /*proto*/
-#if !defined(CYTHON_NO_PYINIT_EXPORT) && (defined(_WIN32) || defined(WIN32) || defined(MS_WINDOWS))
-__Pyx_PyMODINIT_FUNC init__init__(void) { initsort(); }
-#endif
-__Pyx_PyMODINIT_FUNC initsort(void)
+__Pyx_PyMODINIT_FUNC initzero(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initzero(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_sort(void) CYTHON_SMALL_CODE; /*proto*/
-#if !defined(CYTHON_NO_PYINIT_EXPORT) && (defined(_WIN32) || defined(WIN32) || defined(MS_WINDOWS))
-__Pyx_PyMODINIT_FUNC PyInit___init__(void) { return PyInit_sort(); }
-#endif
-__Pyx_PyMODINIT_FUNC PyInit_sort(void)
+__Pyx_PyMODINIT_FUNC PyInit_zero(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_zero(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -3929,7 +3907,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_sort(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_zero(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -3946,7 +3924,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_sort(PyObject *__pyx_pyinit_module
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'sort' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'zero' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -3958,13 +3936,13 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_sort(PyObject *__pyx_pyinit_module
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("sort", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("zero", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   if (unlikely(!__pyx_m)) __PYX_ERR(0, 1, __pyx_L1_error)
   #elif CYTHON_USE_MODULE_STATE
   __pyx_t_1 = PyModule_Create(&__pyx_moduledef); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   {
     int add_module_result = PyState_AddModule(__pyx_t_1, &__pyx_moduledef);
-    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "sort" pseudovariable */
+    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "zero" pseudovariable */
     if (unlikely((add_module_result < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     pystate_addmodule_run = 1;
   }
@@ -3988,7 +3966,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_sort(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_zero(void)", 0);
   if (__Pyx_check_binary_version(__PYX_LIMITED_VERSION_HEX, __Pyx_get_runtime_version(), CYTHON_COMPILING_IN_LIMITED_API) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -4026,17 +4004,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_sort) {
+  if (__pyx_module_is_main_zero) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  }
-  if (!CYTHON_PEP489_MULTI_PHASE_INIT) {
-    if (unlikely((__Pyx_SetPackagePathFromImportLib(__pyx_n_u_sort) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "sort")) {
-      if (unlikely((PyDict_SetItemString(modules, "sort", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "zero")) {
+      if (unlikely((PyDict_SetItemString(modules, "zero", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -4064,7 +4039,7 @@ if (!__Pyx_RefNanny) {
  *     cdef int n = len(arr)
  *     cdef int* s_arr = <int *> malloc(n * sizeof(int))
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4sort_1getMax, 0, __pyx_n_s_getMax, NULL, __pyx_n_s_sort, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4zero_1getMax, 0, __pyx_n_s_getMax, NULL, __pyx_n_s_zero, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_getMax, __pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4076,7 +4051,7 @@ if (!__Pyx_RefNanny) {
  *     cdef int n = len(arr)
  *     cdef int* s_arr = <int *> malloc(n * sizeof(int))
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4sort_3getMin, 0, __pyx_n_s_getMin, NULL, __pyx_n_s_sort, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4zero_3getMin, 0, __pyx_n_s_getMin, NULL, __pyx_n_s_zero, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_getMin, __pyx_t_2) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4088,7 +4063,7 @@ if (!__Pyx_RefNanny) {
  *     return __modulo2__(a)
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4sort_5modulo2, 0, __pyx_n_s_modulo2, NULL, __pyx_n_s_sort, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4zero_5modulo2, 0, __pyx_n_s_modulo2, NULL, __pyx_n_s_zero, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_modulo2, __pyx_t_2) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4100,7 +4075,7 @@ if (!__Pyx_RefNanny) {
  *     return __nearestEven__(a)
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4sort_7nearestEven, 0, __pyx_n_s_nearestEven, NULL, __pyx_n_s_sort, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4zero_7nearestEven, 0, __pyx_n_s_nearestEven, NULL, __pyx_n_s_zero, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_nearestEven, __pyx_t_2) < 0) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4112,7 +4087,7 @@ if (!__Pyx_RefNanny) {
  *     return __incr__(a)
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4sort_9incr, 0, __pyx_n_s_incr, NULL, __pyx_n_s_sort, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4zero_9incr, 0, __pyx_n_s_incr, NULL, __pyx_n_s_zero, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_incr, __pyx_t_2) < 0) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4124,7 +4099,7 @@ if (!__Pyx_RefNanny) {
  *     return __decr__(a)
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4sort_11decr, 0, __pyx_n_s_decr, NULL, __pyx_n_s_sort, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4zero_11decr, 0, __pyx_n_s_decr, NULL, __pyx_n_s_zero, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_decr, __pyx_t_2) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4146,7 +4121,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init sort", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init zero", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -4160,7 +4135,7 @@ if (!__Pyx_RefNanny) {
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init sort");
+    PyErr_SetString(PyExc_ImportError, "init zero");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -4903,57 +4878,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
             PyExc_SystemError,
             "NULL result without error in PyObject_Call");
     }
-    return result;
-}
-#endif
-
-/* SetPackagePathFromImportLib */
-#if PY_MAJOR_VERSION >= 3 && !CYTHON_PEP489_MULTI_PHASE_INIT
-static int __Pyx_SetPackagePathFromImportLib(PyObject *module_name) {
-    PyObject *importlib, *osmod, *ossep, *parts, *package_path;
-    PyObject *file_path = NULL;
-    int result;
-    PyObject *spec;
-    importlib = PyImport_ImportModule("importlib.util");
-    if (unlikely(!importlib))
-        goto bad;
-    spec = PyObject_CallMethod(importlib, "find_spec", "(O)", module_name);
-    Py_DECREF(importlib);
-    if (unlikely(!spec))
-        goto bad;
-    file_path = PyObject_GetAttrString(spec, "origin");
-    Py_DECREF(spec);
-    if (unlikely(!file_path))
-        goto bad;
-    if (unlikely(PyObject_SetAttrString(__pyx_m, "__file__", file_path) < 0))
-        goto bad;
-    osmod = PyImport_ImportModule("os");
-    if (unlikely(!osmod))
-        goto bad;
-    ossep = PyObject_GetAttrString(osmod, "sep");
-    Py_DECREF(osmod);
-    if (unlikely(!ossep))
-        goto bad;
-    parts = PyObject_CallMethod(file_path, "rsplit", "(Oi)", ossep, 1);
-    Py_DECREF(file_path); file_path = NULL;
-    Py_DECREF(ossep);
-    if (unlikely(!parts))
-        goto bad;
-    package_path = Py_BuildValue("[O]", PyList_GET_ITEM(parts, 0));
-    Py_DECREF(parts);
-    if (unlikely(!package_path))
-        goto bad;
-    goto set_path;
-bad:
-    PyErr_WriteUnraisable(module_name);
-    Py_XDECREF(file_path);
-    PyErr_Clear();
-    package_path = PyList_New(0);
-    if (unlikely(!package_path))
-        return -1;
-set_path:
-    result = PyObject_SetAttrString(__pyx_m, "__path__", package_path);
-    Py_DECREF(package_path);
     return result;
 }
 #endif

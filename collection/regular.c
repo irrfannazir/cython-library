@@ -12,7 +12,7 @@ void __bubble__(int arr[], int n) {
 }
 
 void __selection__(int arr[], int n) {
-    int i, j, minIdx, temp;
+    int i, j, minIdx;
     for (i = 0; i < n - 1; i++) {
         minIdx = i;
         for (j = i + 1; j < n; j++) {
