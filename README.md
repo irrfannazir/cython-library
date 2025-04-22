@@ -1,4 +1,5 @@
-The python library made up of C language for faster calculation.
+The python library made up of C language for faster calculation. implemented by cython.
+
 The structure of library
 ```sh
 zero >
