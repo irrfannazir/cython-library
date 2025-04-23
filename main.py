@@ -28,11 +28,3 @@ for i in range(100000):
     insertion_sort(arr)
 b = time() - a
 print("Insertion sort time:", b/100000)
-
-# print("Original array:", arr) 
-# print("Original array:", s.selection(arr)) 
-# print("Original array:", s.radix(arr))
-# print("Original array:", s.heap(arr))
-# print("Original array:", s.quick(arr))
-# print("Original array:", s.merge(arr))
-
