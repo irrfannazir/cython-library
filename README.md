@@ -1,6 +1,6 @@
 The python library made up of C language for faster calculation. implemented by cython.
 
-The structure of library
+The structure of library named "collection"
 ```sh
 zero >
   - getMax(arr : list or array) -> int
@@ -17,4 +17,21 @@ sort >
   - merge(arr : list or array)     -> array
   - quick(arr : list or array)     -> array
   - heap(arr : list or array)      -> array
+```
+
+To clone the git
+```sh
+git clone https://github.com/irrfannazir/cython-library/
+cd cython-library
+```
+
+To compile it in your system
+On Linux
+```sh
+bash compile.bat
+```
+
+On Windows
+```sh
+./compile.bat
 ```
