@@ -17,6 +17,9 @@ sort >
   - merge(arr : list or array)     -> array
   - quick(arr : list or array)     -> array
   - heap(arr : list or array)      -> array
+search >
+  - linear(arr: list, target : int)
+  - binary(arr : list, target : int)
 ```
 
 To clone the git
@@ -25,11 +28,16 @@ git clone https://github.com/irrfannazir/cython-library/
 cd cython-library
 ```
 
-To compile it in your system
+To compile it in your system.
 On Linux
 ```sh
-bash compile.bat
+source env/bin/activate #Activate the Environment
+cd collection
+python setup.py build_ext --inplace #This setup.py compiles the program already written
+cd .. #Go back to the previous directory
+deactivate #This environment is only needed to compile the program
 ```
+
 
 On Windows
 ```sh
