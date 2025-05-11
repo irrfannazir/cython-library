@@ -2,78 +2,81 @@ The python library made up of C language for faster calculation. implemented by 
 
 The structure of library named "collection"
 ```sh
-zero Module
------------
+Python Module Documentation
+===========================
+
+Module: zero
+------------
 
 getMax(arr: list or array) -> int
-- Returns the maximum element in the array.
-- Example: getMax([1, 4, 2, 7]) => 7
+	- Returns the maximum element in the given list or array.
+	- Example: getMax([1, 4, 2, 7]) -> 7
 
 getMin(arr: list or array) -> int
-- Returns the minimum element in the array.
-- Example: getMin([1, 4, 2, 7]) => 1
+	- Returns the minimum element in the given list or array.
+	- Example: getMin([1, 4, 2, 7]) -> 1
 
 modulo2(a: int) -> int
-- Returns the remainder when a is divided by 2.
-- Example: modulo2(5) => 1, modulo2(4) => 0
+	- Returns the remainder when 'a' is divided by 2 (a % 2).
+	- Example: modulo2(5) -> 1
 
 nearestEven(a: int) -> int
-- Returns the nearest even integer less than or equal to a.
-- Example: nearestEven(7) => 6
+	- Returns the nearest even number less than or equal to 'a'.
+	- Example: nearestEven(7) -> 6
 
 incr(a: int) -> int
-- Returns a + 1.
-- Example: incr(3) => 4
+	- Returns the value of 'a' incremented by 1.
+	- Example: incr(3) -> 4
 
 decr(a: int) -> int
-- Returns a - 1.
-- Example: decr(3) => 2
+	- Returns the value of 'a' decremented by 1.
+	- Example: decr(3) -> 2
 
 
-sort Module
------------
+Module: sort
+------------
 
 bubble(arr: list or array) -> array
-- Sorts the array using Bubble Sort algorithm.
-- Time Complexity: O(n^2)
+	- Sorts the array using the Bubble Sort algorithm.
+	- Time Complexity: O(n^2)
 
 selection(arr: list or array) -> array
-- Sorts the array using Selection Sort algorithm.
-- Time Complexity: O(n^2)
+	- Sorts the array using the Selection Sort algorithm.
+	- Time Complexity: O(n^2)
 
 insertion(arr: list or array) -> array
-- Sorts the array using Insertion Sort algorithm.
-- Time Complexity: O(n^2)
+	- Sorts the array using the Insertion Sort algorithm.
+	- Time Complexity: O(n^2)
 
 radix(arr: list or array) -> array
-- Sorts the array using Radix Sort algorithm (non-comparative).
-- Time Complexity: O(nk)
+	- Sorts the array using the Radix Sort algorithm (non-comparative).
+	- Time Complexity: O(nk), where k is the number of digits.
 
 merge(arr: list or array) -> array
-- Sorts the array using Merge Sort algorithm.
-- Time Complexity: O(n log n)
+	- Sorts the array using the Merge Sort algorithm.
+	- Time Complexity: O(n log n)
 
 quick(arr: list or array) -> array
-- Sorts the array using Quick Sort algorithm.
-- Time Complexity: Best/Average = O(n log n), Worst = O(n^2)
+	- Sorts the array using the Quick Sort algorithm.
+	- Time Complexity: Best/Average: O(n log n), Worst: O(n^2)
 
 heap(arr: list or array) -> array
-- Sorts the array using Heap Sort algorithm.
-- Time Complexity: O(n log n)
+	- Sorts the array using the Heap Sort algorithm.
+	- Time Complexity: O(n log n)
 
 
-search Module
--------------
+Module: search
+--------------
 
 linear(arr: list, target: int)
-- Performs a Linear Search for the target.
-- Time Complexity: O(n)
-- Returns index if found, else -1.
+	- Performs a Linear Search for the target in the list.
+	- Time Complexity: O(n)
+	- Returns the index if found, else -1.
 
 binary(arr: list, target: int)
-- Performs a Binary Search on a sorted array.
-- Time Complexity: O(log n)
-- Returns index if found, else -1.
+	- Performs a Binary Search for the target in a sorted list.
+	- Time Complexity: O(log n)
+	- Returns the index if found, else -1.
 
 ```
 
