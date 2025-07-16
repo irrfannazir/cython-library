@@ -10,6 +10,13 @@ This is the fastest way possible for calculation.
 The functions are written in C programming language.    
 Then, the function integrate with python, using cython.   
 
+*How do i use it?*    
+>> Clone it in your project.   
+>> Then type "import collections as c"
+>> Simply you can use all the function from collection.
+For example,   
+>> Then type "print( c.zero.getMax([3,5,6,1]) )"
+
 ---
 
 ## Documentation
