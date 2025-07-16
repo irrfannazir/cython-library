@@ -1,8 +1,21 @@
-The python library made up of C language for faster calculation. implemented by cython.
+# Collection library
 
-The structure of library named "collection"
+A simplest and lightwieghted python library for executing calculations and algorithm effectively.
+
+
+*Why this even exists?*
+This is the fastest way possible for calculation.
+
+*How did this made?*
+The functions are written in C programming language.
+Then, the function integrate with python, using cython.
+
+---
+
+## Documentation
+
 ```sh
-Python Module Documentation
+Collection Module Documentation
 ===========================
 
 Module: zero
