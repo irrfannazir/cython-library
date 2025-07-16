@@ -1,14 +1,14 @@
 # Collection library
 
-A simplest and lightwieghted python library for executing calculations and algorithm effectively.
+A simplest and lightwieghted python library for executing calculations and algorithm effectively.    
 
 
-*Why this even exists?*
+*Why this even exists?*    
 This is the fastest way possible for calculation.
 
-*How did this made?*
-The functions are written in C programming language.
-Then, the function integrate with python, using cython.
+*How did this made?*    
+The functions are written in C programming language.    
+Then, the function integrate with python, using cython.   
 
 ---
 
