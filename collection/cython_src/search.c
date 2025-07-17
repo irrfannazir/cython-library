@@ -4,7 +4,7 @@
 {
     "distutils": {
         "depends": [
-            "include/search.h"
+            "include\\search.h"
         ],
         "include_dirs": [
             "cython_src"
@@ -1489,7 +1489,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char *__pyx_f[] = {
-  "cython_src/search.pyx",
+  "cython_src\\\\search.pyx",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* ForceInitThreads.proto */
@@ -2044,7 +2044,7 @@ static const char __pyx_k_target[] = "target";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_cython_src_search_pyx[] = "cython_src/search.pyx";
+static const char __pyx_k_cython_src_search_pyx[] = "cython_src\\search.pyx";
 /* #### Code section: decls ### */
 static PyObject *__pyx_pf_6search_linear(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_arr, int __pyx_v_target); /* proto */
 static PyObject *__pyx_pf_6search_2binary(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_arr, int __pyx_v_target); /* proto */

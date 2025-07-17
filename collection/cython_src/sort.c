@@ -4,7 +4,7 @@
 {
     "distutils": {
         "depends": [
-            "include/sort.h"
+            "include\\sort.h"
         ],
         "include_dirs": [
             "cython_src"
@@ -1495,7 +1495,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char *__pyx_f[] = {
-  "cython_src/sort.pyx",
+  "cython_src\\\\sort.pyx",
   "<stringsource>",
 };
 /* #### Code section: utility_code_proto_before_types ### */
@@ -2898,7 +2898,7 @@ static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
-static const char __pyx_k_cython_src_sort_pyx[] = "cython_src/sort.pyx";
+static const char __pyx_k_cython_src_sort_pyx[] = "cython_src\\sort.pyx";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_Invalid_shape_in_axis[] = "Invalid shape in axis ";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";

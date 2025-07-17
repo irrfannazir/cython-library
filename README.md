@@ -88,15 +88,23 @@ heap(arr: list or array) -> array
 Module: search
 --------------
 
-linear(arr: list, target: int)
+linear(arr: list, target: int) -> int
 	- Performs a Linear Search for the target in the list.
 	- Time Complexity: O(n)
 	- Returns the index if found, else -1.
 
-binary(arr: list, target: int)
+binary(arr: list, target: int) -> int
 	- Performs a Binary Search for the target in a sorted list.
 	- Time Complexity: O(log n)
 	- Returns the index if found, else -1.
+
+
+Module: os
+--------------
+
+ls() -> list
+	- List all the directories in the current directory
+
 
 ```
 

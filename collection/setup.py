@@ -5,6 +5,18 @@ from Cython.Build import cythonize
 def addDir(dirs, add = "src/"):
     return [add+i for i in dirs]
 
+def generate_library(name, sources):
+    ext = Extension(
+        name=name,
+        sources=sources
+    )
+
+    setup(
+        ext_modules=cythonize([ext], compiler_directives={"language_level": "3"}, force=True)
+    )
+
+generate_library("os", ["cython_src/os.pyx"]+addDir(["ls.c"]))
+
 # ext = Extension(
 #     name="sort",
 #     sources=["cython_src/sort.pyx"]+addDir(["heap.c", "merge.c", "quick.c", "radix.c", "regular.c", "zero.c"])
@@ -23,12 +35,22 @@ def addDir(dirs, add = "src/"):
 #     ext_modules=cythonize([ext], compiler_directives={"language_level": "3"}, force=True)
 # )
 
-ext = Extension(
-    name = "search",
-    sources=["cython_src/search.pyx", "src/search.c"]
-)
+# ext = Extension(
+#     name = "search",
+#     sources=["cython_src/search.pyx", "src/search.c"]
+# )
 
-setup(
-    ext_modules = cythonize([ext], force=True)
-)
+# setup(
+#     ext_modules = cythonize([ext], force=True)
+# )
+
+
+# ext = Extension(
+#     name = "search",
+#     sources=["cython_src/search.pyx", "src/search.c"]
+# )
+
+# setup(
+#     ext_modules = cythonize([ext], force=True)
+# )
 
