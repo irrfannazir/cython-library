@@ -2215,6 +2215,7 @@ static PyObject *__pyx_builtin_range;
 /* #### Code section: string_decls ### */
 static const char __pyx_k_i[] = "i";
 static const char __pyx_k__3[] = "?";
+static const char __pyx_k_ls[] = "ls";
 static const char __pyx_k_os[] = "os";
 static const char __pyx_k_item[] = "item";
 static const char __pyx_k_main[] = "__main__";
@@ -2228,9 +2229,8 @@ static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_cython_src_os_pyx[] = "cython_src\\os.pyx";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_list_directory_contents[] = "list_directory_contents";
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_2os_list_directory_contents(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 typedef struct {
@@ -2360,7 +2360,7 @@ typedef struct {
   PyObject *__pyx_n_s_i;
   PyObject *__pyx_n_s_is_coroutine;
   PyObject *__pyx_n_s_item;
-  PyObject *__pyx_n_s_list_directory_contents;
+  PyObject *__pyx_n_s_ls;
   PyObject *__pyx_n_s_main;
   PyObject *__pyx_n_s_name;
   PyObject *__pyx_n_s_os;
@@ -2423,7 +2423,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_i);
   Py_CLEAR(clear_module_state->__pyx_n_s_is_coroutine);
   Py_CLEAR(clear_module_state->__pyx_n_s_item);
-  Py_CLEAR(clear_module_state->__pyx_n_s_list_directory_contents);
+  Py_CLEAR(clear_module_state->__pyx_n_s_ls);
   Py_CLEAR(clear_module_state->__pyx_n_s_main);
   Py_CLEAR(clear_module_state->__pyx_n_s_name);
   Py_CLEAR(clear_module_state->__pyx_n_s_os);
@@ -2464,7 +2464,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_i);
   Py_VISIT(traverse_module_state->__pyx_n_s_is_coroutine);
   Py_VISIT(traverse_module_state->__pyx_n_s_item);
-  Py_VISIT(traverse_module_state->__pyx_n_s_list_directory_contents);
+  Py_VISIT(traverse_module_state->__pyx_n_s_ls);
   Py_VISIT(traverse_module_state->__pyx_n_s_main);
   Py_VISIT(traverse_module_state->__pyx_n_s_name);
   Py_VISIT(traverse_module_state->__pyx_n_s_os);
@@ -2603,7 +2603,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_i __pyx_mstate_global->__pyx_n_s_i
 #define __pyx_n_s_is_coroutine __pyx_mstate_global->__pyx_n_s_is_coroutine
 #define __pyx_n_s_item __pyx_mstate_global->__pyx_n_s_item
-#define __pyx_n_s_list_directory_contents __pyx_mstate_global->__pyx_n_s_list_directory_contents
+#define __pyx_n_s_ls __pyx_mstate_global->__pyx_n_s_ls
 #define __pyx_n_s_main __pyx_mstate_global->__pyx_n_s_main
 #define __pyx_n_s_name __pyx_mstate_global->__pyx_n_s_name
 #define __pyx_n_s_os __pyx_mstate_global->__pyx_n_s_os
@@ -2910,28 +2910,28 @@ static CYTHON_INLINE PyObject *__pyx_f_7cpython_11contextvars_get_value_no_defau
 /* "os.pyx":8
  *     void free_directory_contents(char **contents, int count)
  * 
- * def list_directory_contents():             # <<<<<<<<<<<<<<
+ * def ls():             # <<<<<<<<<<<<<<
  *     cdef int count = 0
  *     cdef char **contents = get_directory_contents(&count)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2os_1list_directory_contents(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_2os_1list_directory_contents = {"list_directory_contents", (PyCFunction)__pyx_pw_2os_1list_directory_contents, METH_NOARGS, 0};
-static PyObject *__pyx_pw_2os_1list_directory_contents(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_2os_1ls(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_2os_1ls = {"ls", (PyCFunction)__pyx_pw_2os_1ls, METH_NOARGS, 0};
+static PyObject *__pyx_pw_2os_1ls(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("list_directory_contents (wrapper)", 0);
+  __Pyx_RefNannySetupContext("ls (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_2os_list_directory_contents(__pyx_self);
+  __pyx_r = __pyx_pf_2os_ls(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_2os_list_directory_contents(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self) {
   int __pyx_v_count;
   char **__pyx_v_contents;
   PyObject *__pyx_v_result = NULL;
@@ -2957,11 +2957,11 @@ static PyObject *__pyx_pf_2os_list_directory_contents(CYTHON_UNUSED PyObject *__
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("list_directory_contents", 1);
+  __Pyx_RefNannySetupContext("ls", 1);
 
   /* "os.pyx":9
  * 
- * def list_directory_contents():
+ * def ls():
  *     cdef int count = 0             # <<<<<<<<<<<<<<
  *     cdef char **contents = get_directory_contents(&count)
  * 
@@ -2969,7 +2969,7 @@ static PyObject *__pyx_pf_2os_list_directory_contents(CYTHON_UNUSED PyObject *__
   __pyx_v_count = 0;
 
   /* "os.pyx":10
- * def list_directory_contents():
+ * def ls():
  *     cdef int count = 0
  *     cdef char **contents = get_directory_contents(&count)             # <<<<<<<<<<<<<<
  * 
@@ -3073,7 +3073,7 @@ static PyObject *__pyx_pf_2os_list_directory_contents(CYTHON_UNUSED PyObject *__
  *             result.append(item)
  *         return result             # <<<<<<<<<<<<<<
  *     finally:
- *         # Free the allocated memory
+ *         free_directory_contents(contents, count)
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(__pyx_v_result);
@@ -3081,9 +3081,9 @@ static PyObject *__pyx_pf_2os_list_directory_contents(CYTHON_UNUSED PyObject *__
     goto __pyx_L4_return;
   }
 
-  /* "os.pyx":24
+  /* "os.pyx":23
+ *         return result
  *     finally:
- *         # Free the allocated memory
  *         free_directory_contents(contents, count)             # <<<<<<<<<<<<<<
  */
   /*finally:*/ {
@@ -3132,7 +3132,7 @@ static PyObject *__pyx_pf_2os_list_directory_contents(CYTHON_UNUSED PyObject *__
   /* "os.pyx":8
  *     void free_directory_contents(char **contents, int count)
  * 
- * def list_directory_contents():             # <<<<<<<<<<<<<<
+ * def ls():             # <<<<<<<<<<<<<<
  *     cdef int count = 0
  *     cdef char **contents = get_directory_contents(&count)
  */
@@ -3140,7 +3140,7 @@ static PyObject *__pyx_pf_2os_list_directory_contents(CYTHON_UNUSED PyObject *__
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("os.list_directory_contents", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("os.ls", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_result);
@@ -3175,7 +3175,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
     {&__pyx_n_s_is_coroutine, __pyx_k_is_coroutine, sizeof(__pyx_k_is_coroutine), 0, 0, 1, 1},
     {&__pyx_n_s_item, __pyx_k_item, sizeof(__pyx_k_item), 0, 0, 1, 1},
-    {&__pyx_n_s_list_directory_contents, __pyx_k_list_directory_contents, sizeof(__pyx_k_list_directory_contents), 0, 0, 1, 1},
+    {&__pyx_n_s_ls, __pyx_k_ls, sizeof(__pyx_k_ls), 0, 0, 1, 1},
     {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
     {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
     {&__pyx_n_s_os, __pyx_k_os, sizeof(__pyx_k_os), 0, 0, 1, 1},
@@ -3202,14 +3202,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "os.pyx":8
  *     void free_directory_contents(char **contents, int count)
  * 
- * def list_directory_contents():             # <<<<<<<<<<<<<<
+ * def ls():             # <<<<<<<<<<<<<<
  *     cdef int count = 0
  *     cdef char **contents = get_directory_contents(&count)
  */
   __pyx_tuple_ = PyTuple_Pack(5, __pyx_n_s_count, __pyx_n_s_contents, __pyx_n_s_result, __pyx_n_s_i, __pyx_n_s_item); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_src_os_pyx, __pyx_n_s_list_directory_contents, 8, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_src_os_pyx, __pyx_n_s_ls, 8, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -3604,13 +3604,13 @@ if (!__Pyx_RefNanny) {
   /* "os.pyx":8
  *     void free_directory_contents(char **contents, int count)
  * 
- * def list_directory_contents():             # <<<<<<<<<<<<<<
+ * def ls():             # <<<<<<<<<<<<<<
  *     cdef int count = 0
  *     cdef char **contents = get_directory_contents(&count)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_2os_1list_directory_contents, 0, __pyx_n_s_list_directory_contents, NULL, __pyx_n_s_os, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_2os_1ls, 0, __pyx_n_s_ls, NULL, __pyx_n_s_os, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_list_directory_contents, __pyx_t_2) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_ls, __pyx_t_2) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "os.pyx":1

@@ -3,8 +3,11 @@
 A simplest and lightwieghted python library for executing calculations and algorithm effectively.    
 
 
-*Why this even exists?*    
-This is the fastest way possible for calculation.
+*Why this even exists?*
+This is the potentially faster as much as possible.
+It uses low memory.
+It is simple. No OOPS in it.
+
 
 *How did this made?*    
 The functions are written in C programming language.    
