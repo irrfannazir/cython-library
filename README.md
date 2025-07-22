@@ -1,6 +1,6 @@
 # Collection library
 
-A simplest and lightwieghted python library for executing calculations and algorithm effectively.    
+A simplest and lightwieghted python library for executing debugging, calculations and algorithm effectively.    
 
 
 *Why this even exists?*
