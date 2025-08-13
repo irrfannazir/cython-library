@@ -4,7 +4,7 @@
 {
     "distutils": {
         "depends": [
-            "include\\os.h"
+            "include/os.h"
         ],
         "include_dirs": [
             "cython_src"
@@ -1256,11 +1256,20 @@ static CYTHON_INLINE float __PYX_NAN() {
 #define __PYX_HAVE_API__os
 /* Early includes */
 #include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
 #include <stddef.h>
 #include "pythread.h"
+#include <stdlib.h>
+#include <errno.h>
 #include "../include/os.h"
+
+    #ifdef _WIN32
+    #include <direct.h>
+    #define getcwd _getcwd
+    #else
+    #include <unistd.h>
+    #endif
+    
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -1509,7 +1518,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char *__pyx_f[] = {
-  "cython_src\\\\os.pyx",
+  "cython_src/os.pyx",
   "contextvars.pxd",
   "type.pxd",
   "bool.pxd",
@@ -1835,6 +1844,16 @@ static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject 
 #define __Pyx_ExceptionReset(type, value, tb)  PyErr_SetExcInfo(type, value, tb)
 #endif
 
+/* PyObjectCall.proto */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
+#else
+#define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
+#endif
+
+/* RaiseException.proto */
+static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
+
 /* TypeImport.proto */
 #ifndef __PYX_HAVE_RT_ImportType_proto_3_0_12
 #define __PYX_HAVE_RT_ImportType_proto_3_0_12
@@ -2114,15 +2133,13 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 static CYTHON_INLINE double __pyx_f_7cpython_7complex_7complex_4real_real(PyComplexObject *__pyx_v_self); /* proto*/
 static CYTHON_INLINE double __pyx_f_7cpython_7complex_7complex_4imag_imag(PyComplexObject *__pyx_v_self); /* proto*/
 
-/* Module declarations from "libc.string" */
-
-/* Module declarations from "libc.stdlib" */
-
 /* Module declarations from "cpython.version" */
 
 /* Module declarations from "__builtin__" */
 
 /* Module declarations from "cpython.type" */
+
+/* Module declarations from "libc.string" */
 
 /* Module declarations from "libc.stdio" */
 
@@ -2202,7 +2219,12 @@ static CYTHON_INLINE double __pyx_f_7cpython_7complex_7complex_4imag_imag(PyComp
 
 /* Module declarations from "cpython" */
 
+/* Module declarations from "libc.stdlib" */
+
+/* Module declarations from "libc.errno" */
+
 /* Module declarations from "os" */
+static int __pyx_v_2os_PATH_MAX;
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
 #define __Pyx_MODULE_NAME "os"
@@ -2212,25 +2234,36 @@ int __pyx_module_is_main_os = 0;
 /* Implementation of "os" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_range;
+static PyObject *__pyx_builtin_MemoryError;
+static PyObject *__pyx_builtin_OSError;
 /* #### Code section: string_decls ### */
 static const char __pyx_k_i[] = "i";
-static const char __pyx_k__3[] = "?";
+static const char __pyx_k__6[] = "?";
 static const char __pyx_k_ls[] = "ls";
 static const char __pyx_k_os[] = "os";
+static const char __pyx_k_buf[] = "buf";
+static const char __pyx_k_res[] = "res";
 static const char __pyx_k_item[] = "item";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_count[] = "count";
 static const char __pyx_k_range[] = "range";
+static const char __pyx_k_getdir[] = "getdir";
+static const char __pyx_k_py_str[] = "py_str";
 static const char __pyx_k_result[] = "result";
+static const char __pyx_k_OSError[] = "OSError";
 static const char __pyx_k_contents[] = "contents";
+static const char __pyx_k_MemoryError[] = "MemoryError";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
-static const char __pyx_k_cython_src_os_pyx[] = "cython_src\\os.pyx";
+static const char __pyx_k_getcwd_failed[] = "getcwd failed";
+static const char __pyx_k_cython_src_os_pyx[] = "cython_src/os.pyx";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
+static const char __pyx_k_Failed_to_allocate_memory_for_cw[] = "Failed to allocate memory for cwd buffer";
 /* #### Code section: decls ### */
 static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_2os_2getdir(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 typedef struct {
@@ -2264,11 +2297,9 @@ typedef struct {
   #endif
   #if CYTHON_USE_MODULE_STATE
   #endif
-  #if CYTHON_USE_MODULE_STATE
-  #endif
-  #if CYTHON_USE_MODULE_STATE
-  #endif
   PyTypeObject *__pyx_ptype_7cpython_4type_type;
+  #if CYTHON_USE_MODULE_STATE
+  #endif
   #if CYTHON_USE_MODULE_STATE
   #endif
   #if CYTHON_USE_MODULE_STATE
@@ -2351,12 +2382,22 @@ typedef struct {
   #endif
   #if CYTHON_USE_MODULE_STATE
   #endif
-  PyObject *__pyx_n_s__3;
+  #if CYTHON_USE_MODULE_STATE
+  #endif
+  #if CYTHON_USE_MODULE_STATE
+  #endif
+  PyObject *__pyx_kp_u_Failed_to_allocate_memory_for_cw;
+  PyObject *__pyx_n_s_MemoryError;
+  PyObject *__pyx_n_s_OSError;
+  PyObject *__pyx_n_s__6;
   PyObject *__pyx_n_s_asyncio_coroutines;
+  PyObject *__pyx_n_s_buf;
   PyObject *__pyx_n_s_cline_in_traceback;
   PyObject *__pyx_n_s_contents;
   PyObject *__pyx_n_s_count;
   PyObject *__pyx_kp_s_cython_src_os_pyx;
+  PyObject *__pyx_kp_u_getcwd_failed;
+  PyObject *__pyx_n_s_getdir;
   PyObject *__pyx_n_s_i;
   PyObject *__pyx_n_s_is_coroutine;
   PyObject *__pyx_n_s_item;
@@ -2364,11 +2405,16 @@ typedef struct {
   PyObject *__pyx_n_s_main;
   PyObject *__pyx_n_s_name;
   PyObject *__pyx_n_s_os;
+  PyObject *__pyx_n_s_py_str;
   PyObject *__pyx_n_s_range;
+  PyObject *__pyx_n_s_res;
   PyObject *__pyx_n_s_result;
   PyObject *__pyx_n_s_test;
   PyObject *__pyx_tuple_;
-  PyObject *__pyx_codeobj__2;
+  PyObject *__pyx_tuple__2;
+  PyObject *__pyx_tuple__4;
+  PyObject *__pyx_codeobj__3;
+  PyObject *__pyx_codeobj__5;
 } __pyx_mstate;
 
 #if CYTHON_USE_MODULE_STATE
@@ -2414,12 +2460,18 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_ptype_7cpython_4type_type);
   Py_CLEAR(clear_module_state->__pyx_ptype_7cpython_4bool_bool);
   Py_CLEAR(clear_module_state->__pyx_ptype_7cpython_7complex_complex);
-  Py_CLEAR(clear_module_state->__pyx_n_s__3);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_Failed_to_allocate_memory_for_cw);
+  Py_CLEAR(clear_module_state->__pyx_n_s_MemoryError);
+  Py_CLEAR(clear_module_state->__pyx_n_s_OSError);
+  Py_CLEAR(clear_module_state->__pyx_n_s__6);
   Py_CLEAR(clear_module_state->__pyx_n_s_asyncio_coroutines);
+  Py_CLEAR(clear_module_state->__pyx_n_s_buf);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
   Py_CLEAR(clear_module_state->__pyx_n_s_contents);
   Py_CLEAR(clear_module_state->__pyx_n_s_count);
   Py_CLEAR(clear_module_state->__pyx_kp_s_cython_src_os_pyx);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_getcwd_failed);
+  Py_CLEAR(clear_module_state->__pyx_n_s_getdir);
   Py_CLEAR(clear_module_state->__pyx_n_s_i);
   Py_CLEAR(clear_module_state->__pyx_n_s_is_coroutine);
   Py_CLEAR(clear_module_state->__pyx_n_s_item);
@@ -2427,11 +2479,16 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_main);
   Py_CLEAR(clear_module_state->__pyx_n_s_name);
   Py_CLEAR(clear_module_state->__pyx_n_s_os);
+  Py_CLEAR(clear_module_state->__pyx_n_s_py_str);
   Py_CLEAR(clear_module_state->__pyx_n_s_range);
+  Py_CLEAR(clear_module_state->__pyx_n_s_res);
   Py_CLEAR(clear_module_state->__pyx_n_s_result);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
   Py_CLEAR(clear_module_state->__pyx_tuple_);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__2);
+  Py_CLEAR(clear_module_state->__pyx_tuple__2);
+  Py_CLEAR(clear_module_state->__pyx_tuple__4);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__3);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__5);
   return 0;
 }
 #endif
@@ -2455,12 +2512,18 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_ptype_7cpython_4type_type);
   Py_VISIT(traverse_module_state->__pyx_ptype_7cpython_4bool_bool);
   Py_VISIT(traverse_module_state->__pyx_ptype_7cpython_7complex_complex);
-  Py_VISIT(traverse_module_state->__pyx_n_s__3);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_Failed_to_allocate_memory_for_cw);
+  Py_VISIT(traverse_module_state->__pyx_n_s_MemoryError);
+  Py_VISIT(traverse_module_state->__pyx_n_s_OSError);
+  Py_VISIT(traverse_module_state->__pyx_n_s__6);
   Py_VISIT(traverse_module_state->__pyx_n_s_asyncio_coroutines);
+  Py_VISIT(traverse_module_state->__pyx_n_s_buf);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
   Py_VISIT(traverse_module_state->__pyx_n_s_contents);
   Py_VISIT(traverse_module_state->__pyx_n_s_count);
   Py_VISIT(traverse_module_state->__pyx_kp_s_cython_src_os_pyx);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_getcwd_failed);
+  Py_VISIT(traverse_module_state->__pyx_n_s_getdir);
   Py_VISIT(traverse_module_state->__pyx_n_s_i);
   Py_VISIT(traverse_module_state->__pyx_n_s_is_coroutine);
   Py_VISIT(traverse_module_state->__pyx_n_s_item);
@@ -2468,11 +2531,16 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_main);
   Py_VISIT(traverse_module_state->__pyx_n_s_name);
   Py_VISIT(traverse_module_state->__pyx_n_s_os);
+  Py_VISIT(traverse_module_state->__pyx_n_s_py_str);
   Py_VISIT(traverse_module_state->__pyx_n_s_range);
+  Py_VISIT(traverse_module_state->__pyx_n_s_res);
   Py_VISIT(traverse_module_state->__pyx_n_s_result);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
   Py_VISIT(traverse_module_state->__pyx_tuple_);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__2);
+  Py_VISIT(traverse_module_state->__pyx_tuple__2);
+  Py_VISIT(traverse_module_state->__pyx_tuple__4);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__3);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__5);
   return 0;
 }
 #endif
@@ -2507,11 +2575,9 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #endif
 #if CYTHON_USE_MODULE_STATE
 #endif
-#if CYTHON_USE_MODULE_STATE
-#endif
-#if CYTHON_USE_MODULE_STATE
-#endif
 #define __pyx_ptype_7cpython_4type_type __pyx_mstate_global->__pyx_ptype_7cpython_4type_type
+#if CYTHON_USE_MODULE_STATE
+#endif
 #if CYTHON_USE_MODULE_STATE
 #endif
 #if CYTHON_USE_MODULE_STATE
@@ -2594,12 +2660,22 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #endif
 #if CYTHON_USE_MODULE_STATE
 #endif
-#define __pyx_n_s__3 __pyx_mstate_global->__pyx_n_s__3
+#if CYTHON_USE_MODULE_STATE
+#endif
+#if CYTHON_USE_MODULE_STATE
+#endif
+#define __pyx_kp_u_Failed_to_allocate_memory_for_cw __pyx_mstate_global->__pyx_kp_u_Failed_to_allocate_memory_for_cw
+#define __pyx_n_s_MemoryError __pyx_mstate_global->__pyx_n_s_MemoryError
+#define __pyx_n_s_OSError __pyx_mstate_global->__pyx_n_s_OSError
+#define __pyx_n_s__6 __pyx_mstate_global->__pyx_n_s__6
 #define __pyx_n_s_asyncio_coroutines __pyx_mstate_global->__pyx_n_s_asyncio_coroutines
+#define __pyx_n_s_buf __pyx_mstate_global->__pyx_n_s_buf
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
 #define __pyx_n_s_contents __pyx_mstate_global->__pyx_n_s_contents
 #define __pyx_n_s_count __pyx_mstate_global->__pyx_n_s_count
 #define __pyx_kp_s_cython_src_os_pyx __pyx_mstate_global->__pyx_kp_s_cython_src_os_pyx
+#define __pyx_kp_u_getcwd_failed __pyx_mstate_global->__pyx_kp_u_getcwd_failed
+#define __pyx_n_s_getdir __pyx_mstate_global->__pyx_n_s_getdir
 #define __pyx_n_s_i __pyx_mstate_global->__pyx_n_s_i
 #define __pyx_n_s_is_coroutine __pyx_mstate_global->__pyx_n_s_is_coroutine
 #define __pyx_n_s_item __pyx_mstate_global->__pyx_n_s_item
@@ -2607,11 +2683,16 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_main __pyx_mstate_global->__pyx_n_s_main
 #define __pyx_n_s_name __pyx_mstate_global->__pyx_n_s_name
 #define __pyx_n_s_os __pyx_mstate_global->__pyx_n_s_os
+#define __pyx_n_s_py_str __pyx_mstate_global->__pyx_n_s_py_str
 #define __pyx_n_s_range __pyx_mstate_global->__pyx_n_s_range
+#define __pyx_n_s_res __pyx_mstate_global->__pyx_n_s_res
 #define __pyx_n_s_result __pyx_mstate_global->__pyx_n_s_result
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
 #define __pyx_tuple_ __pyx_mstate_global->__pyx_tuple_
-#define __pyx_codeobj__2 __pyx_mstate_global->__pyx_codeobj__2
+#define __pyx_tuple__2 __pyx_mstate_global->__pyx_tuple__2
+#define __pyx_tuple__4 __pyx_mstate_global->__pyx_tuple__4
+#define __pyx_codeobj__3 __pyx_mstate_global->__pyx_codeobj__3
+#define __pyx_codeobj__5 __pyx_mstate_global->__pyx_codeobj__5
 /* #### Code section: module_code ### */
 
 /* "cpython/complex.pxd":19
@@ -2907,8 +2988,8 @@ static CYTHON_INLINE PyObject *__pyx_f_7cpython_11contextvars_get_value_no_defau
   return __pyx_r;
 }
 
-/* "os.pyx":8
- *     void free_directory_contents(char **contents, int count)
+/* "os.pyx":25
+ * cdef int PATH_MAX = 4096  # typical max path length
  * 
  * def ls():             # <<<<<<<<<<<<<<
  *     cdef int count = 0
@@ -2959,7 +3040,7 @@ static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ls", 1);
 
-  /* "os.pyx":9
+  /* "os.pyx":26
  * 
  * def ls():
  *     cdef int count = 0             # <<<<<<<<<<<<<<
@@ -2968,7 +3049,7 @@ static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self) {
  */
   __pyx_v_count = 0;
 
-  /* "os.pyx":10
+  /* "os.pyx":27
  * def ls():
  *     cdef int count = 0
  *     cdef char **contents = get_directory_contents(&count)             # <<<<<<<<<<<<<<
@@ -2977,7 +3058,7 @@ static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self) {
  */
   __pyx_v_contents = get_directory_contents((&__pyx_v_count));
 
-  /* "os.pyx":12
+  /* "os.pyx":29
  *     cdef char **contents = get_directory_contents(&count)
  * 
  *     if contents == NULL:             # <<<<<<<<<<<<<<
@@ -2987,7 +3068,7 @@ static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self) {
   __pyx_t_1 = (__pyx_v_contents == NULL);
   if (__pyx_t_1) {
 
-    /* "os.pyx":13
+    /* "os.pyx":30
  * 
  *     if contents == NULL:
  *         return []             # <<<<<<<<<<<<<<
@@ -2995,13 +3076,13 @@ static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self) {
  *     try:
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "os.pyx":12
+    /* "os.pyx":29
  *     cdef char **contents = get_directory_contents(&count)
  * 
  *     if contents == NULL:             # <<<<<<<<<<<<<<
@@ -3010,7 +3091,7 @@ static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self) {
  */
   }
 
-  /* "os.pyx":15
+  /* "os.pyx":32
  *         return []
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -3019,19 +3100,19 @@ static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self) {
  */
   /*try:*/ {
 
-    /* "os.pyx":16
+    /* "os.pyx":33
  * 
  *     try:
  *         result = []             # <<<<<<<<<<<<<<
  *         for i in range(count):
  *             # Convert each C string to Python string
  */
-    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L5_error)
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_result = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "os.pyx":17
+    /* "os.pyx":34
  *     try:
  *         result = []
  *         for i in range(count):             # <<<<<<<<<<<<<<
@@ -3043,7 +3124,7 @@ static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self) {
     for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
       __pyx_v_i = __pyx_t_5;
 
-      /* "os.pyx":19
+      /* "os.pyx":36
  *         for i in range(count):
  *             # Convert each C string to Python string
  *             item = contents[i].decode('utf-8')             # <<<<<<<<<<<<<<
@@ -3051,24 +3132,24 @@ static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self) {
  *         return result
  */
       __pyx_t_6 = (__pyx_v_contents[__pyx_v_i]);
-      __pyx_t_7 = __Pyx_ssize_strlen(__pyx_t_6); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 19, __pyx_L5_error)
-      __pyx_t_2 = __Pyx_decode_c_string(__pyx_t_6, 0, __pyx_t_7, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L5_error)
+      __pyx_t_7 = __Pyx_ssize_strlen(__pyx_t_6); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 36, __pyx_L5_error)
+      __pyx_t_2 = __Pyx_decode_c_string(__pyx_t_6, 0, __pyx_t_7, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_INCREF(__pyx_t_2);
       __Pyx_XDECREF_SET(__pyx_v_item, __pyx_t_2);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "os.pyx":20
+      /* "os.pyx":37
  *             # Convert each C string to Python string
  *             item = contents[i].decode('utf-8')
  *             result.append(item)             # <<<<<<<<<<<<<<
  *         return result
  *     finally:
  */
-      __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_result, __pyx_v_item); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 20, __pyx_L5_error)
+      __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_result, __pyx_v_item); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 37, __pyx_L5_error)
     }
 
-    /* "os.pyx":21
+    /* "os.pyx":38
  *             item = contents[i].decode('utf-8')
  *             result.append(item)
  *         return result             # <<<<<<<<<<<<<<
@@ -3081,10 +3162,12 @@ static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self) {
     goto __pyx_L4_return;
   }
 
-  /* "os.pyx":23
+  /* "os.pyx":40
  *         return result
  *     finally:
  *         free_directory_contents(contents, count)             # <<<<<<<<<<<<<<
+ * 
+ * 
  */
   /*finally:*/ {
     __pyx_L5_error:;
@@ -3129,8 +3212,8 @@ static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self) {
     }
   }
 
-  /* "os.pyx":8
- *     void free_directory_contents(char **contents, int count)
+  /* "os.pyx":25
+ * cdef int PATH_MAX = 4096  # typical max path length
  * 
  * def ls():             # <<<<<<<<<<<<<<
  *     cdef int count = 0
@@ -3145,6 +3228,201 @@ static PyObject *__pyx_pf_2os_ls(CYTHON_UNUSED PyObject *__pyx_self) {
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_result);
   __Pyx_XDECREF(__pyx_v_item);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "os.pyx":43
+ * 
+ * 
+ * def getdir():             # <<<<<<<<<<<<<<
+ *     cdef char *buf = <char *>malloc(PATH_MAX)
+ *     if not buf:
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_2os_3getdir(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_2os_3getdir = {"getdir", (PyCFunction)__pyx_pw_2os_3getdir, METH_NOARGS, 0};
+static PyObject *__pyx_pw_2os_3getdir(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("getdir (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_2os_2getdir(__pyx_self);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_2os_2getdir(CYTHON_UNUSED PyObject *__pyx_self) {
+  char *__pyx_v_buf;
+  char *__pyx_v_res;
+  PyObject *__pyx_v_py_str = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  Py_ssize_t __pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("getdir", 1);
+
+  /* "os.pyx":44
+ * 
+ * def getdir():
+ *     cdef char *buf = <char *>malloc(PATH_MAX)             # <<<<<<<<<<<<<<
+ *     if not buf:
+ *         raise MemoryError("Failed to allocate memory for cwd buffer")
+ */
+  __pyx_v_buf = ((char *)malloc(__pyx_v_2os_PATH_MAX));
+
+  /* "os.pyx":45
+ * def getdir():
+ *     cdef char *buf = <char *>malloc(PATH_MAX)
+ *     if not buf:             # <<<<<<<<<<<<<<
+ *         raise MemoryError("Failed to allocate memory for cwd buffer")
+ * 
+ */
+  __pyx_t_1 = (!(__pyx_v_buf != 0));
+  if (unlikely(__pyx_t_1)) {
+
+    /* "os.pyx":46
+ *     cdef char *buf = <char *>malloc(PATH_MAX)
+ *     if not buf:
+ *         raise MemoryError("Failed to allocate memory for cwd buffer")             # <<<<<<<<<<<<<<
+ * 
+ *     cdef char *res = getcwd(buf, PATH_MAX)
+ */
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __PYX_ERR(0, 46, __pyx_L1_error)
+
+    /* "os.pyx":45
+ * def getdir():
+ *     cdef char *buf = <char *>malloc(PATH_MAX)
+ *     if not buf:             # <<<<<<<<<<<<<<
+ *         raise MemoryError("Failed to allocate memory for cwd buffer")
+ * 
+ */
+  }
+
+  /* "os.pyx":48
+ *         raise MemoryError("Failed to allocate memory for cwd buffer")
+ * 
+ *     cdef char *res = getcwd(buf, PATH_MAX)             # <<<<<<<<<<<<<<
+ *     if res == NULL:
+ *         free(buf)
+ */
+  __pyx_v_res = getcwd(__pyx_v_buf, __pyx_v_2os_PATH_MAX);
+
+  /* "os.pyx":49
+ * 
+ *     cdef char *res = getcwd(buf, PATH_MAX)
+ *     if res == NULL:             # <<<<<<<<<<<<<<
+ *         free(buf)
+ *         raise OSError(errno, "getcwd failed")
+ */
+  __pyx_t_1 = (__pyx_v_res == NULL);
+  if (unlikely(__pyx_t_1)) {
+
+    /* "os.pyx":50
+ *     cdef char *res = getcwd(buf, PATH_MAX)
+ *     if res == NULL:
+ *         free(buf)             # <<<<<<<<<<<<<<
+ *         raise OSError(errno, "getcwd failed")
+ *     else:
+ */
+    free(__pyx_v_buf);
+
+    /* "os.pyx":51
+ *     if res == NULL:
+ *         free(buf)
+ *         raise OSError(errno, "getcwd failed")             # <<<<<<<<<<<<<<
+ *     else:
+ *         py_str = buf.decode('utf-8')
+ */
+    __pyx_t_2 = __Pyx_PyInt_From_int(errno); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_GIVEREF(__pyx_t_2);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error);
+    __Pyx_INCREF(__pyx_kp_u_getcwd_failed);
+    __Pyx_GIVEREF(__pyx_kp_u_getcwd_failed);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_kp_u_getcwd_failed)) __PYX_ERR(0, 51, __pyx_L1_error);
+    __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_OSError, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __PYX_ERR(0, 51, __pyx_L1_error)
+
+    /* "os.pyx":49
+ * 
+ *     cdef char *res = getcwd(buf, PATH_MAX)
+ *     if res == NULL:             # <<<<<<<<<<<<<<
+ *         free(buf)
+ *         raise OSError(errno, "getcwd failed")
+ */
+  }
+
+  /* "os.pyx":53
+ *         raise OSError(errno, "getcwd failed")
+ *     else:
+ *         py_str = buf.decode('utf-8')             # <<<<<<<<<<<<<<
+ *         free(buf)
+ *         return py_str
+ */
+  /*else*/ {
+    __pyx_t_4 = __Pyx_ssize_strlen(__pyx_v_buf); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 53, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_decode_c_string(__pyx_v_buf, 0, __pyx_t_4, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_v_py_str = __pyx_t_2;
+    __pyx_t_2 = 0;
+
+    /* "os.pyx":54
+ *     else:
+ *         py_str = buf.decode('utf-8')
+ *         free(buf)             # <<<<<<<<<<<<<<
+ *         return py_str
+ */
+    free(__pyx_v_buf);
+
+    /* "os.pyx":55
+ *         py_str = buf.decode('utf-8')
+ *         free(buf)
+ *         return py_str             # <<<<<<<<<<<<<<
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(__pyx_v_py_str);
+    __pyx_r = __pyx_v_py_str;
+    goto __pyx_L0;
+  }
+
+  /* "os.pyx":43
+ * 
+ * 
+ * def getdir():             # <<<<<<<<<<<<<<
+ *     cdef char *buf = <char *>malloc(PATH_MAX)
+ *     if not buf:
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("os.getdir", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_py_str);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -3166,12 +3444,18 @@ static PyMethodDef __pyx_methods[] = {
 
 static int __Pyx_CreateStringTabAndInitStrings(void) {
   __Pyx_StringTabEntry __pyx_string_tab[] = {
-    {&__pyx_n_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 1},
+    {&__pyx_kp_u_Failed_to_allocate_memory_for_cw, __pyx_k_Failed_to_allocate_memory_for_cw, sizeof(__pyx_k_Failed_to_allocate_memory_for_cw), 0, 1, 0, 0},
+    {&__pyx_n_s_MemoryError, __pyx_k_MemoryError, sizeof(__pyx_k_MemoryError), 0, 0, 1, 1},
+    {&__pyx_n_s_OSError, __pyx_k_OSError, sizeof(__pyx_k_OSError), 0, 0, 1, 1},
+    {&__pyx_n_s__6, __pyx_k__6, sizeof(__pyx_k__6), 0, 0, 1, 1},
     {&__pyx_n_s_asyncio_coroutines, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
+    {&__pyx_n_s_buf, __pyx_k_buf, sizeof(__pyx_k_buf), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
     {&__pyx_n_s_contents, __pyx_k_contents, sizeof(__pyx_k_contents), 0, 0, 1, 1},
     {&__pyx_n_s_count, __pyx_k_count, sizeof(__pyx_k_count), 0, 0, 1, 1},
     {&__pyx_kp_s_cython_src_os_pyx, __pyx_k_cython_src_os_pyx, sizeof(__pyx_k_cython_src_os_pyx), 0, 0, 1, 0},
+    {&__pyx_kp_u_getcwd_failed, __pyx_k_getcwd_failed, sizeof(__pyx_k_getcwd_failed), 0, 1, 0, 0},
+    {&__pyx_n_s_getdir, __pyx_k_getdir, sizeof(__pyx_k_getdir), 0, 0, 1, 1},
     {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
     {&__pyx_n_s_is_coroutine, __pyx_k_is_coroutine, sizeof(__pyx_k_is_coroutine), 0, 0, 1, 1},
     {&__pyx_n_s_item, __pyx_k_item, sizeof(__pyx_k_item), 0, 0, 1, 1},
@@ -3179,7 +3463,9 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
     {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
     {&__pyx_n_s_os, __pyx_k_os, sizeof(__pyx_k_os), 0, 0, 1, 1},
+    {&__pyx_n_s_py_str, __pyx_k_py_str, sizeof(__pyx_k_py_str), 0, 0, 1, 1},
     {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
+    {&__pyx_n_s_res, __pyx_k_res, sizeof(__pyx_k_res), 0, 0, 1, 1},
     {&__pyx_n_s_result, __pyx_k_result, sizeof(__pyx_k_result), 0, 0, 1, 1},
     {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
     {0, 0, 0, 0, 0, 0, 0}
@@ -3188,7 +3474,9 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_builtin_OSError = __Pyx_GetBuiltinName(__pyx_n_s_OSError); if (!__pyx_builtin_OSError) __PYX_ERR(0, 51, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -3199,17 +3487,40 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "os.pyx":8
- *     void free_directory_contents(char **contents, int count)
+  /* "os.pyx":46
+ *     cdef char *buf = <char *>malloc(PATH_MAX)
+ *     if not buf:
+ *         raise MemoryError("Failed to allocate memory for cwd buffer")             # <<<<<<<<<<<<<<
+ * 
+ *     cdef char *res = getcwd(buf, PATH_MAX)
+ */
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Failed_to_allocate_memory_for_cw); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple_);
+  __Pyx_GIVEREF(__pyx_tuple_);
+
+  /* "os.pyx":25
+ * cdef int PATH_MAX = 4096  # typical max path length
  * 
  * def ls():             # <<<<<<<<<<<<<<
  *     cdef int count = 0
  *     cdef char **contents = get_directory_contents(&count)
  */
-  __pyx_tuple_ = PyTuple_Pack(5, __pyx_n_s_count, __pyx_n_s_contents, __pyx_n_s_result, __pyx_n_s_i, __pyx_n_s_item); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 8, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple_);
-  __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_src_os_pyx, __pyx_n_s_ls, 8, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(5, __pyx_n_s_count, __pyx_n_s_contents, __pyx_n_s_result, __pyx_n_s_i, __pyx_n_s_item); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__2);
+  __Pyx_GIVEREF(__pyx_tuple__2);
+  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_src_os_pyx, __pyx_n_s_ls, 25, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 25, __pyx_L1_error)
+
+  /* "os.pyx":43
+ * 
+ * 
+ * def getdir():             # <<<<<<<<<<<<<<
+ *     cdef char *buf = <char *>malloc(PATH_MAX)
+ *     if not buf:
+ */
+  __pyx_tuple__4 = PyTuple_Pack(3, __pyx_n_s_buf, __pyx_n_s_res, __pyx_n_s_py_str); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__4);
+  __Pyx_GIVEREF(__pyx_tuple__4);
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_src_os_pyx, __pyx_n_s_getdir, 43, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -3601,22 +3912,43 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "os.pyx":8
- *     void free_directory_contents(char **contents, int count)
+  /* "os.pyx":23
+ * 
+ * 
+ * cdef int PATH_MAX = 4096  # typical max path length             # <<<<<<<<<<<<<<
+ * 
+ * def ls():
+ */
+  __pyx_v_2os_PATH_MAX = 0x1000;
+
+  /* "os.pyx":25
+ * cdef int PATH_MAX = 4096  # typical max path length
  * 
  * def ls():             # <<<<<<<<<<<<<<
  *     cdef int count = 0
  *     cdef char **contents = get_directory_contents(&count)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_2os_1ls, 0, __pyx_n_s_ls, NULL, __pyx_n_s_os, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_2os_1ls, 0, __pyx_n_s_ls, NULL, __pyx_n_s_os, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_ls, __pyx_t_2) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_ls, __pyx_t_2) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "os.pyx":43
+ * 
+ * 
+ * def getdir():             # <<<<<<<<<<<<<<
+ *     cdef char *buf = <char *>malloc(PATH_MAX)
+ *     if not buf:
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_2os_3getdir, 0, __pyx_n_s_getdir, NULL, __pyx_n_s_os, __pyx_d, ((PyObject *)__pyx_codeobj__5)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_getdir, __pyx_t_2) < 0) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "os.pyx":1
- * from libc.stdlib cimport free             # <<<<<<<<<<<<<<
- * from cpython cimport PyObject, PyList_New, PyList_SET_ITEM
- * 
+ * from cpython cimport PyObject, PyList_New, PyList_SET_ITEM             # <<<<<<<<<<<<<<
+ * from libc.stdlib cimport malloc, free
+ * from libc.string cimport strlen
  */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -4336,6 +4668,192 @@ static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject 
     Py_XDECREF(tmp_value);
     Py_XDECREF(tmp_tb);
   #endif
+}
+#endif
+
+/* PyObjectCall */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw) {
+    PyObject *result;
+    ternaryfunc call = Py_TYPE(func)->tp_call;
+    if (unlikely(!call))
+        return PyObject_Call(func, arg, kw);
+    #if PY_MAJOR_VERSION < 3
+    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
+        return NULL;
+    #else
+    if (unlikely(Py_EnterRecursiveCall(" while calling a Python object")))
+        return NULL;
+    #endif
+    result = (*call)(func, arg, kw);
+    Py_LeaveRecursiveCall();
+    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
+        PyErr_SetString(
+            PyExc_SystemError,
+            "NULL result without error in PyObject_Call");
+    }
+    return result;
+}
+#endif
+
+/* RaiseException */
+#if PY_MAJOR_VERSION < 3
+static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause) {
+    __Pyx_PyThreadState_declare
+    CYTHON_UNUSED_VAR(cause);
+    Py_XINCREF(type);
+    if (!value || value == Py_None)
+        value = NULL;
+    else
+        Py_INCREF(value);
+    if (!tb || tb == Py_None)
+        tb = NULL;
+    else {
+        Py_INCREF(tb);
+        if (!PyTraceBack_Check(tb)) {
+            PyErr_SetString(PyExc_TypeError,
+                "raise: arg 3 must be a traceback or None");
+            goto raise_error;
+        }
+    }
+    if (PyType_Check(type)) {
+#if CYTHON_COMPILING_IN_PYPY
+        if (!value) {
+            Py_INCREF(Py_None);
+            value = Py_None;
+        }
+#endif
+        PyErr_NormalizeException(&type, &value, &tb);
+    } else {
+        if (value) {
+            PyErr_SetString(PyExc_TypeError,
+                "instance exception may not have a separate value");
+            goto raise_error;
+        }
+        value = type;
+        type = (PyObject*) Py_TYPE(type);
+        Py_INCREF(type);
+        if (!PyType_IsSubtype((PyTypeObject *)type, (PyTypeObject *)PyExc_BaseException)) {
+            PyErr_SetString(PyExc_TypeError,
+                "raise: exception class must be a subclass of BaseException");
+            goto raise_error;
+        }
+    }
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrRestore(type, value, tb);
+    return;
+raise_error:
+    Py_XDECREF(value);
+    Py_XDECREF(type);
+    Py_XDECREF(tb);
+    return;
+}
+#else
+static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause) {
+    PyObject* owned_instance = NULL;
+    if (tb == Py_None) {
+        tb = 0;
+    } else if (tb && !PyTraceBack_Check(tb)) {
+        PyErr_SetString(PyExc_TypeError,
+            "raise: arg 3 must be a traceback or None");
+        goto bad;
+    }
+    if (value == Py_None)
+        value = 0;
+    if (PyExceptionInstance_Check(type)) {
+        if (value) {
+            PyErr_SetString(PyExc_TypeError,
+                "instance exception may not have a separate value");
+            goto bad;
+        }
+        value = type;
+        type = (PyObject*) Py_TYPE(value);
+    } else if (PyExceptionClass_Check(type)) {
+        PyObject *instance_class = NULL;
+        if (value && PyExceptionInstance_Check(value)) {
+            instance_class = (PyObject*) Py_TYPE(value);
+            if (instance_class != type) {
+                int is_subclass = PyObject_IsSubclass(instance_class, type);
+                if (!is_subclass) {
+                    instance_class = NULL;
+                } else if (unlikely(is_subclass == -1)) {
+                    goto bad;
+                } else {
+                    type = instance_class;
+                }
+            }
+        }
+        if (!instance_class) {
+            PyObject *args;
+            if (!value)
+                args = PyTuple_New(0);
+            else if (PyTuple_Check(value)) {
+                Py_INCREF(value);
+                args = value;
+            } else
+                args = PyTuple_Pack(1, value);
+            if (!args)
+                goto bad;
+            owned_instance = PyObject_Call(type, args, NULL);
+            Py_DECREF(args);
+            if (!owned_instance)
+                goto bad;
+            value = owned_instance;
+            if (!PyExceptionInstance_Check(value)) {
+                PyErr_Format(PyExc_TypeError,
+                             "calling %R should have returned an instance of "
+                             "BaseException, not %R",
+                             type, Py_TYPE(value));
+                goto bad;
+            }
+        }
+    } else {
+        PyErr_SetString(PyExc_TypeError,
+            "raise: exception class must be a subclass of BaseException");
+        goto bad;
+    }
+    if (cause) {
+        PyObject *fixed_cause;
+        if (cause == Py_None) {
+            fixed_cause = NULL;
+        } else if (PyExceptionClass_Check(cause)) {
+            fixed_cause = PyObject_CallObject(cause, NULL);
+            if (fixed_cause == NULL)
+                goto bad;
+        } else if (PyExceptionInstance_Check(cause)) {
+            fixed_cause = cause;
+            Py_INCREF(fixed_cause);
+        } else {
+            PyErr_SetString(PyExc_TypeError,
+                            "exception causes must derive from "
+                            "BaseException");
+            goto bad;
+        }
+        PyException_SetCause(value, fixed_cause);
+    }
+    PyErr_SetObject(type, value);
+    if (tb) {
+      #if PY_VERSION_HEX >= 0x030C00A6
+        PyException_SetTraceback(value, tb);
+      #elif CYTHON_FAST_THREAD_STATE
+        PyThreadState *tstate = __Pyx_PyThreadState_Current;
+        PyObject* tmp_tb = tstate->curexc_traceback;
+        if (tb != tmp_tb) {
+            Py_INCREF(tb);
+            tstate->curexc_traceback = tb;
+            Py_XDECREF(tmp_tb);
+        }
+#else
+        PyObject *tmp_type, *tmp_value, *tmp_tb;
+        PyErr_Fetch(&tmp_type, &tmp_value, &tmp_tb);
+        Py_INCREF(tb);
+        PyErr_Restore(tmp_type, tmp_value, tb);
+        Py_XDECREF(tmp_tb);
+#endif
+    }
+bad:
+    Py_XDECREF(owned_instance);
+    return;
 }
 #endif
 
@@ -6385,7 +6903,7 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
         Py_XDECREF(name);
-        name = __Pyx_NewRef(__pyx_n_s__3);
+        name = __Pyx_NewRef(__pyx_n_s__6);
     }
     return name;
 }
