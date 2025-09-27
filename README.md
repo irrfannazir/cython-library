@@ -1,6 +1,6 @@
-# Collection library
+# Sysdone library
 
-A simplest and lightwieghted python library for executing calculations and algorithm effectively.    
+A simplest and lightwieghted python library with functions compiled. This mainly focuses executing calculations and algorithm effectively.    
 
 
 *Why this even exists?*
@@ -107,6 +107,7 @@ Module: os
 
 ls() -> list
 	- List all the directories in the current directory
+
 
 
 ```

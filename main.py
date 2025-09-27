@@ -1,5 +1,5 @@
-import collection.zero as z
-import collection.sort as s
+import sysdone.zero as z
+import sysdone.sort as s
 from time import time
 arr = [5, 2, 9, 1, 5, 6, 3, 4, 2, 3, 6, 3, 8, 3, 7, 2, 1, 4, 6, 3, 5, 6, 2, 4, 33, 42, 13, 23, 12, 34, 45, 56, 67, 78, 89, 90]
 
@@ -21,10 +21,10 @@ a = time()
 for i in range(100000):
     s.insertion(arr)
 b = time() - a 
-print("Insertion sort time:", b/100000)
+print("SysdoneInsertion sort time:", b/100000)
 
 a = time()
 for i in range(100000):
     insertion_sort(arr)
 b = time() - a
-print("Insertion sort time:", b/100000)
+print("Python Insertion sort time:", b/100000)
