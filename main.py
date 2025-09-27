@@ -1,8 +1,8 @@
 import sysdone.zero as z
 import sysdone.sort as s
 from time import time
-arr = [5, 2, 9, 1, 5, 6, 3, 4, 2, 3, 6, 3, 8, 3, 7, 2, 1, 4, 6, 3, 5, 6, 2, 4, 33, 42, 13, 23, 12, 34, 45, 56, 67, 78, 89, 90]
-
+arr = [34, 45, 34, 78, 56, 34, 46, 37, 78, 73, 68, 65 , 5, 2, 9, 1, 5, 6, 3, 4, 2, 3, 6, 3, 8, 3, 7, 2, 1, 4, 6, 3, 5, 6, 2, 4, 33, 42, 13, 23, 12, 34, 45, 56, 67, 78, 89, 90]
+arr = arr * 10
 
 def insertion_sort(data):
     """Sorts a list in-place using the insertion sort algorithm."""
@@ -18,13 +18,14 @@ def insertion_sort(data):
         data[j + 1] = key
 
 a = time()
-for i in range(100000):
+iter = 100000
+for i in range(iter):
     s.insertion(arr)
 b = time() - a 
-print("SysdoneInsertion sort time:", b/100000)
+print("Sysdone Insertion sort time:", b/iter)
 
 a = time()
-for i in range(100000):
+for i in range(iter):
     insertion_sort(arr)
 b = time() - a
-print("Python Insertion sort time:", b/100000)
+print("Python Insertion sort time:", b/iter)
