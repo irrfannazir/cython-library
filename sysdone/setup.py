@@ -1,3 +1,8 @@
+# Copyright (c) 2025 Irfan Nazir
+# Licensed under the MIT License
+# See LICENSE file for details
+
+
 # setup.py
 from setuptools import setup, Extension
 from Cython.Build import cythonize
@@ -12,6 +17,8 @@ def generate_library(name, sources):
     )
 
     setup(
+        license="MIT",
+        license_files=["LICENSE"],
         ext_modules=cythonize([ext], compiler_directives={"language_level": "3"}, force=True)
     )
 

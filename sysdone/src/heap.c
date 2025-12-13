@@ -1,3 +1,10 @@
+/* 
+ * Copyright (c) 2025 Irfan Nazir
+ * Licensed under the MIT License
+ * See LICENSE file for details
+ */
+
+
 void swap(int *x, int*y){
     if(x != y){
         *x = *x^*y;

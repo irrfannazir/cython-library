@@ -1,4 +1,8 @@
-
+/* 
+ * Copyright (c) 2025 Irfan Nazir
+ * Licensed under the MIT License
+ * See LICENSE file for details
+ */
 
 int partition(int arr[], int low, int high) {
     int pivot = arr[high];

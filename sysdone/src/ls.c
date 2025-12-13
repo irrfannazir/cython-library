@@ -1,3 +1,9 @@
+/* 
+ * Copyright (c) 2025 Irfan Nazir
+ * Licensed under the MIT License
+ * See LICENSE file for details
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

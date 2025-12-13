@@ -1,3 +1,10 @@
+/* 
+ * Copyright (c) 2025 Irfan Nazir
+ * Licensed under the MIT License
+ * See LICENSE file for details
+ */
+
+
 #ifndef SORT_H
 #define SORT_H
 

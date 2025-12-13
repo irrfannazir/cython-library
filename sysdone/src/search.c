@@ -1,3 +1,9 @@
+/* 
+ * Copyright (c) 2025 Irfan Nazir
+ * Licensed under the MIT License
+ * See LICENSE file for details
+ */
+
 int __linear__(int arr[], int size, int target) {
     for (int i = 0; i < size; i++) {
         if (arr[i] == target) {

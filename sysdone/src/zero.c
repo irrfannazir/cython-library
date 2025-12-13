@@ -1,3 +1,9 @@
+/* 
+ * Copyright (c) 2025 Irfan Nazir
+ * Licensed under the MIT License
+ * See LICENSE file for details
+ */
+
 int __getMax__(int arr[], int n) {
     int max = arr[0];
     for (int i = 1; i < n; i++) {
