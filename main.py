@@ -19,6 +19,7 @@ def insertion_sort(data):
 
 a = time()
 iter = 100000
+print("Comparison of insertion sort speed of sysdone and python.")
 for i in range(iter):
     s.insertion(arr)
 b = time() - a 
