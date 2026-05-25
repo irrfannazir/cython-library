@@ -20,20 +20,20 @@ def generate_library(name, sources):
         ext_modules=cythonize([ext], compiler_directives={"language_level": "3"}, force=True)
     )
 
-# generate_library(
-#     "sort",
-#     ["cython_src/sort.pyx"]+addDir(["heap.c", "merge.c", "quick.c", "radix.c", "regular.c", "zero.c"])
-# )
+generate_library(
+    "sort",
+    ["cython_src/sort.pyx"]+addDir(["heap.c", "merge.c", "quick.c", "radix.c", "regular.c", "zero.c"])
+)
 
-# generate_library(
-#     "zero",
-#     ["cython_src/zero.pyx", "src/zero.c"]
-# )
+generate_library(
+    "zero",
+    ["cython_src/zero.pyx"]
+)
 
-# generate_library(
-#     "search",
-#     ["cython_src/search.pyx", "src/search.c"]
-# )
+generate_library(
+    "search",
+    ["cython_src/search.pyx", "src/search.c"]
+)
 
 generate_library(
     "os",

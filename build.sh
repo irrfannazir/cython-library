@@ -16,7 +16,7 @@ source env/bin/activate
 pip show cython > /dev/null 2>&1 || pip install cython
 
 # Change to the directory containing setup.py
-cd collection
+cd sysdone
 
 # Build the extension in-place
 python setup.py build_ext --inplace
